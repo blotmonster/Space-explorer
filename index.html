@@ -60,22 +60,22 @@
 
     <script>
         const data = [
-            { name: "The Sun", temp: "10,000°F", car: "176 Years", jump: "N/A", mtn: "N/A", life: "0%", moons: "8 Planets", fact: "The Sun is 93 million miles away. If you drove at 60mph, it would take 176 years to get there!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/1/sun.png" },
-            { name: "Mercury", temp: "800°F", car: "61 Years", jump: "3x Higher", mtn: "1.8 miles", life: "0.1%", moons: "0", fact: "Mercury is the smallest planet and it's actually shrinking!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/3/mercury.png" },
-            { name: "Venus", temp: "867°F", car: "28 Years", jump: "Normal", mtn: "7 miles", life: "5%", moons: "0", fact: "Venus is the hottest planet and it spins backwards!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/5/venus.png" },
-            { name: "Earth", temp: "59°F", car: "0", jump: "Normal", mtn: "5.5 miles", life: "100%", moons: "1", fact: "The only planet we know of with liquid water and life!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/7/earth.png" },
-            { name: "Mars", temp: "-80°F", car: "53 Years", jump: "3x Higher", mtn: "13 miles", life: "40%", moons: "2", fact: "Mars has blue sunsets and the solar system's biggest volcano, Olympus Mons!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/9/mars.png" },
-            { name: "Jupiter", temp: "-234°F", car: "420 Years", jump: "Heavy", mtn: "None", life: "10%", moons: "95", fact: "Jupiter is a gas giant with a storm (the Red Spot) bigger than Earth!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/11/jupiter.png" },
-            { name: "Saturn", temp: "-288°F", car: "850 Years", jump: "Normal", mtn: "None", life: "5%", moons: "146", fact: "Saturn's rings are made of billions of pieces of ice!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/13/saturn.png" },
-            { name: "Uranus", temp: "-353°F", car: "1,700 Years", jump: "Lower", mtn: "None", life: "1%", moons: "28", fact: "Uranus tilts so much it actually orbits on its side like a bowling ball!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/15/uranus.png" },
-            { name: "Neptune", temp: "-353°F", car: "2,700 Years", jump: "Heavier", mtn: "None", life: "1%", moons: "16", fact: "Neptune has winds faster than a jet plane!", img: "https://www.solarsystemscope.com/spacepedia/images/storage/en/it-texts/17/neptune.png" }
+            { name: "The Sun", color: "orange", temp: "10,000°F", car: "176 Years", jump: "N/A", mtn: "N/A", life: "0%", moons: "8 Planets", fact: "The Sun makes up 99.8% of all the mass in our solar system!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA03149.jpg" },
+            { name: "Mercury", color: "gray", temp: "800°F", car: "61 Years", jump: "3x Higher", mtn: "1.8 miles", life: "0.1%", moons: "0", fact: "Mercury is the smallest planet and it's actually shrinking!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA19422.jpg" },
+            { name: "Venus", color: "yellow", temp: "867°F", car: "28 Years", jump: "Normal", mtn: "7 miles", life: "5%", moons: "0", fact: "Venus is the hottest planet and it spins backwards compared to others!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA00104.jpg" },
+            { name: "Earth", color: "blue", temp: "59°F", car: "0", jump: "Normal", mtn: "5.5 miles", life: "100%", moons: "1", fact: "The only planet we know of with liquid water and life!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA00122.jpg" },
+            { name: "Mars", color: "red", temp: "-80°F", car: "53 Years", jump: "3x Higher", mtn: "13 miles", life: "40%", moons: "2", fact: "Mars has blue sunsets and the solar system's biggest volcano, Olympus Mons!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA02653.jpg" },
+            { name: "Jupiter", color: "brown", temp: "-234°F", car: "420 Years", jump: "Heavy", mtn: "None", life: "10%", moons: "95", fact: "Jupiter is a gas giant with a storm (the Red Spot) bigger than Earth!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA04866.jpg" },
+            { name: "Saturn", color: "tan", temp: "-288°F", car: "850 Years", jump: "Normal", mtn: "None", life: "5%", moons: "146", fact: "Saturn's rings are made of billions of pieces of ice!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA01364.jpg" },
+            { name: "Uranus", color: "cyan", temp: "-353°F", car: "1,700 Years", jump: "Lower", mtn: "None", life: "1%", moons: "28", fact: "Uranus tilts so much it actually orbits on its side like a bowling ball!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA18182.jpg" },
+            { name: "Neptune", color: "darkblue", temp: "-353°F", car: "2,700 Years", jump: "Heavier", mtn: "None", life: "1%", moons: "16", fact: "Neptune has winds faster than a jet plane!", img: "https://photojournal.jpl.nasa.gov/jpeg/PIA01492.jpg" }
         ];
 
         const system = document.getElementById('solar-system');
         data.forEach((p, i) => {
             const b = document.createElement('div');
             b.className = 'planet-btn';
-            b.innerHTML = `<img src="${p.img}"><div class="planet-name">${p.name}</div>`;
+            b.innerHTML = `<img src="${p.img}" style="background-color: ${p.color}"><div class="planet-name">${p.name}</div>`;
             b.onclick = () => {
                 document.querySelectorAll('.planet-btn').forEach(node => node.classList.remove('active'));
                 b.classList.add('active');
