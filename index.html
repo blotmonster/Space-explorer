@@ -5,37 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Explorer 🚀</title>
     <style>
-        :root { --space-bg: #030406; --neon-blue: #4cc9f0; --accent: #f72585; --gold: #ffcc00; }
+        :root { --space-bg: #030406; --neon-blue: #4cc9f0; --accent: #f72585; --gold: #ffcc00; --sun-gold: #FFD700; }
         body { 
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
             background: var(--space-bg); color: white; margin: 0; 
             display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+            background-image: radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 40px);
+            background-size: 300px 300px;
         }
         h1 { margin: 30px 0 10px 0; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px var(--neon-blue); }
         
-        /* Centered Planet Selection */
         #solar-system {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; 
             padding: 20px; width: 100%; max-width: 1000px;
         }
         .planet-btn { cursor: pointer; text-align: center; width: 100px; transition: 0.3s; }
-        .planet-btn img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid transparent; object-fit: cover; }
+        .planet-btn img { width: 85px; height: 85px; border-radius: 50%; border: 3px solid transparent; object-fit: cover; background: #111; }
         .planet-btn:hover { transform: translateY(-5px); }
         .planet-btn.active img { border-color: var(--neon-blue); box-shadow: 0 0 20px var(--neon-blue); }
         .planet-name { margin-top: 10px; font-weight: bold; font-size: 0.9rem; }
 
-        /* Info Card */
         #planet-card {
             width: 90%; max-width: 600px; background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--neon-blue); border-radius: 20px;
             padding: 25px; margin: 20px; display: none; backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .main-img { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto 20px; border-radius: 20px; border: 1px solid #444; }
+        .main-img { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto 20px; border-radius: 20px; border: 2px solid #444; }
         .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .stat-box { background: rgba(255, 255, 255, 0.08); padding: 12px; border-radius: 10px; border-left: 4px solid var(--neon-blue); }
         .label { font-size: 0.7rem; color: var(--neon-blue); text-transform: uppercase; display: block; margin-bottom: 3px; }
         .value { font-size: 1rem; font-weight: bold; }
-        .fact { margin-top: 20px; font-style: italic; color: #ccc; border-top: 1px solid #333; padding-top: 15px; }
+        .fact { margin-top: 20px; font-style: italic; color: #ccc; border-top: 1px solid #333; padding-top: 15px; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -46,30 +47,30 @@
     <div id="solar-system"></div>
 
     <div id="planet-card">
-        <h2 id="display-name" style="text-align: center; font-size: 2rem; margin-top: 0;"></h2>
+        <h2 id="display-name" style="text-align: center; font-size: 2.2rem; margin-top: 0;"></h2>
         <img id="planet-img" class="main-img" src="" alt="">
         <div class="stat-grid">
-            <div class="stat-box"><span class="label">Temp</span><span id="temp" class="value"></span></div>
+            <div class="stat-box"><span class="label">Temperature</span><span id="temp" class="value"></span></div>
             <div class="stat-box" style="border-left-color: #00ff00;"><span class="label">🚗 Drive Time</span><span id="car" class="value"></span></div>
             <div class="stat-box" style="border-left-color: var(--accent);"><span class="label">Gravity Jump</span><span id="jump" class="value"></span></div>
             <div class="stat-box"><span class="label">Tallest Mountain</span><span id="mtn" class="value"></span></div>
-            <div class="stat-box" style="border-left-color: var(--gold);"><span class="label">Life Chance</span><span id="life" class="value"></span></div>
-            <div class="stat-box"><span class="label">Moons</span><span id="moons" class="value"></span></div>
+            <div class="stat-box" style="border-left-color: var(--gold);"><span class="label">Chance Life Ever Existed</span><span id="life" class="value"></span></div>
+            <div class="stat-box"><span class="label">Known Moons</span><span id="moons" class="value"></span></div>
         </div>
         <div class="fact" id="fact-text"></div>
     </div>
 
     <script>
         const data = [
-            { name: "The Sun", temp: "10,000°F", car: "176 Years", jump: "N/A", mtn: "N/A", life: "0%", moons: "8 Planets", fact: "The Sun is so big that 1.3 million Earths could fit inside it!", img: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000790/GSFC_20171208_Archive_e000790~thumb.jpg" },
-            { name: "Mercury", temp: "800°F", car: "61 Years", jump: "3x Higher", mtn: "1.8 miles", life: "0.1%", moons: "0", fact: "Mercury is the smallest planet and it's actually shrinking!", img: "https://images-assets.nasa.gov/image/PIA15162/PIA15162~thumb.jpg" },
-            { name: "Venus", temp: "867°F", car: "28 Years", jump: "Normal", mtn: "7 miles", life: "5%", moons: "0", fact: "Venus is the hottest planet and spins backwards!", img: "https://images-assets.nasa.gov/image/PIA00271/PIA00271~thumb.jpg" },
-            { name: "Earth", temp: "59°F", car: "0", jump: "Normal", mtn: "5.5 miles", life: "100%", moons: "1", fact: "The only planet we know of with liquid water and life!", img: "https://images-assets.nasa.gov/image/AS17-148-22727/AS17-148-22727~thumb.jpg" },
-            { name: "Mars", temp: "-80°F", car: "53 Years", jump: "3x Higher", mtn: "13 miles", life: "40%", moons: "2", fact: "Mars has blue sunsets and the solar system's biggest volcano!", img: "https://images-assets.nasa.gov/image/PIA04591/PIA04591~thumb.jpg" },
-            { name: "Jupiter", temp: "-234°F", car: "420 Years", jump: "Heavy", mtn: "None", life: "10%", moons: "95", fact: "Jupiter is a gas giant with a storm bigger than Earth!", img: "https://images-assets.nasa.gov/image/PIA22946/PIA22946~thumb.jpg" },
-            { name: "Saturn", temp: "-288°F", car: "850 Years", jump: "Normal", mtn: "None", life: "5%", moons: "146", fact: "Saturn's rings are made of billions of pieces of ice!", img: "https://images-assets.nasa.gov/image/PIA06077/PIA06077~thumb.jpg" },
-            { name: "Uranus", temp: "-353°F", car: "1,700 Years", jump: "Lower", mtn: "None", life: "1%", moons: "28", fact: "Uranus tilts so much it actually orbits on its side!", img: "https://images-assets.nasa.gov/image/PIA01360/PIA01360~thumb.jpg" },
-            { name: "Neptune", temp: "-353°F", car: "2,700 Years", jump: "Heavier", mtn: "None", life: "1%", moons: "16", fact: "Neptune has winds faster than a jet plane!", img: "https://images-assets.nasa.gov/image/PIA01492/PIA01492~thumb.jpg" }
+            { name: "The Sun", temp: "10,000°F (Surface)", car: "176 Years", jump: "N/A", mtn: "N/A", life: "0%", moons: "8 Planets", fact: "The Sun makes up 99.8% of all the mass in our solar system!", img: "https://upload.wikimedia.org/wikipedia/commons/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg" },
+            { name: "Mercury", temp: "800°F", car: "61 Years", jump: "3x Higher", mtn: "1.8 miles", life: "0.1%", moons: "0", fact: "Mercury is the smallest planet and it's actually shrinking as its core cools!", img: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg" },
+            { name: "Venus", temp: "867°F", car: "28 Years", jump: "Normal", mtn: "7 miles", life: "5%", moons: "0", fact: "Venus is the hottest planet and it spins backwards compared to others!", img: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg" },
+            { name: "Earth", temp: "59°F", car: "0", jump: "Normal", mtn: "5.5 miles", life: "100%", moons: "1", fact: "The only planet we know of with liquid water and life!", img: "https://upload.wikimedia.org/wikipedia/commons/c/cb/The_Blue_Marble_2012.jpg" },
+            { name: "Mars", temp: "-80°F", car: "53 Years", jump: "3x Higher", mtn: "13 miles", life: "40%", moons: "2", fact: "Mars has blue sunsets and the solar system's biggest volcano, Olympus Mons!", img: "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg" },
+            { name: "Jupiter", temp: "-234°F", car: "420 Years", jump: "Heavy", mtn: "None", life: "10%", moons: "95", fact: "Jupiter is a gas giant with a storm (the Red Spot) bigger than Earth!", img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg" },
+            { name: "Saturn", temp: "-288°F", car: "850 Years", jump: "Normal", mtn: "None", life: "5%", moons: "146", fact: "Saturn's rings are made of billions of pieces of ice and rock!", img: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg" },
+            { name: "Uranus", temp: "-353°F", car: "1,700 Years", jump: "Lower", mtn: "None", life: "1%", moons: "28", fact: "Uranus tilts so much it actually orbits on its side like a bowling ball!", img: "https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg" },
+            { name: "Neptune", temp: "-353°F", car: "2,700 Years", jump: "Heavier", mtn: "None", life: "1%", moons: "16", fact: "Neptune has winds faster than a jet plane and is 30 times farther from the Sun than Earth!", img: "https://upload.wikimedia.org/wikipedia/commons/6/63/Neptune_Full.jpg" }
         ];
 
         const system = document.getElementById('solar-system');
