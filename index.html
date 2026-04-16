@@ -164,7 +164,7 @@
         
         <div class="stat-grid">
             <div class="stat-box" style="border-color: #ff9f1c;"><span class="label">🌡️ Temperature</span><span id="temp" class="value"></span></div>
-            <div class="stat-box" style="border-color: #06d6a0;"><span class="label">🚗 Drive Time (60mph)</span><span id="car" class="value"></span></div>
+            <div class="stat-box" style="border-color: #06d6a0;"><span class="label">🚗 Drive Time From Earth (60mph)</span><span id="car" class="value"></span></div>
             <div class="stat-box" style="border-color: #ef476f;"><span class="label">🦘 Gravity Jump</span><span id="jump" class="value"></span></div>
             <div class="stat-box" style="border-color: #118ab2;"><span class="label">🏔️ Tallest Mountain</span><span id="mtn" class="value"></span></div>
             <div class="stat-box" style="border-color: #ffd166;"><span class="label">👽 Chance of Life</span><span id="life" class="value"></span></div>
@@ -187,8 +187,8 @@
             { id: 'mars', name: "Mars", gradient: "gradient-mars", color: "#e53e3e", temp: "-80°F", car: "53 Years", jump: "2.6x Higher", mtn: "13 miles", life: "40%", moons: "2", fact: "Mars has blue sunsets! Dust in the atmosphere scatters blue light toward anyone watching." },
             { id: 'jupiter', name: "Jupiter", gradient: "gradient-jupiter", color: "#b08d6a", temp: "-234°F", car: "420 Years", jump: "0.4x (Heavy)", mtn: "None (Gas Giant)", life: "10%", moons: "95", fact: "Jupiter is a gas giant with a storm called the Great Red Spot that is bigger than the entire Earth!" },
             { id: 'saturn', name: "Saturn", gradient: "gradient-saturn", color: "#d4b886", temp: "-288°F", car: "850 Years", jump: "0.9x (Normal)", mtn: "None (Gas Giant)", life: "5%", moons: "146", fact: "Saturn's beautiful rings aren't solid; they are made of billions of pieces of ice and rock!" },
-            { id: 'uranus', name: "Uranus", gradient: "gradient-uranus", color: "#4fd1c5", temp: "-353°F", car: "1,700 Years", jump: "1.1x Higher", mtn: "None (Ice Giant)", life: "1%", moons: "28", fact: "Uranus tilts so much it actually orbits on its side, rolling around the Sun like a ball!" },
-            { id: 'neptune', name: "Neptune", gradient: "gradient-neptune", color: "#1e3a8a", temp: "-353°F", car: "2,700 Years", jump: "0.9x (Normal)", mtn: "None (Ice Giant)", life: "1%", moons: "16", fact: "Neptune has the fastest winds in the solar system, reaching speeds over 1,200 mph!" }
+            { id: 'uranus', name: "Uranus", gradient: "gradient-uranus", color: "#4fd1c5", temp: "-353°F", car: "3,200 Years", jump: "1.1x Higher", mtn: "None (Ice Giant)", life: "1%", moons: "28", fact: "Uranus tilts so much it actually orbits on its side, rolling around the Sun like a ball!" },
+            { id: 'neptune', name: "Neptune", gradient: "gradient-neptune", color: "#1e3a8a", temp: "-353°F", car: "5,100 Years", jump: "0.9x (Normal)", mtn: "None (Ice Giant)", life: "1%", moons: "16", fact: "Neptune has the fastest winds in the solar system, reaching speeds over 1,200 mph!" }
         ];
 
         const system = document.getElementById('solar-system');
@@ -236,7 +236,7 @@
                 // Smooth scroll down to the card
                 card.scrollIntoView({behavior: 'smooth', block: 'start'});
             };
-            system.appendChild(btn);
+            system.appendChild(b);
         });
     </script>
 </body>
